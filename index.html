@@ -8,92 +8,105 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Globales (Estilo Glassmorphism Oscuro y Moderno) */
+        /* Estilos Globales */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at 10% 20%, #1a1a1a 0%, #111 90%);
+            background-color: #111;
             color: #e6e6e6;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-attachment: fixed;
         }
 
         h1, h2, h3 {
             color: #D4AF37;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
             font-weight: 700;
         }
 
-        /* Encabezado con Logotipo simplificado */
-        header {
-            text-align: center;
-            padding: 60px 20px 20px;
+        /* Hero Section (Fondo con foto antojable) */
+        .hero {
+            position: relative;
+            height: 45vh; /* Ocupa el 45% de la pantalla */
+            background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=2070&auto=format&fit=crop'); /* Foto de muestra de pollo crujiente */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Capa oscura sobre la foto para que resalte el logo */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(17,17,17,0.3) 0%, rgba(17,17,17,1) 100%);
         }
 
         .logo {
-            max-width: 280px;
-            width: 100%;
-            height: auto;
+            position: relative;
+            z-index: 2;
+            max-width: 250px;
+            width: 80%;
+            animation: fadeInUp 1s ease-out forwards, levitate 3s ease-in-out infinite 1s;
         }
 
-        /* Contenedor principal de tarjetas */
+        /* Contenedor principal */
         main {
-            max-width: 950px; 
-            margin: 0 auto;
-            padding: 0 20px 60px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            max-width: 800px;
+            margin: -40px auto 100px; /* Sube un poco para encimarse en la foto */
+            padding: 0 20px;
+            position: relative;
+            z-index: 3;
         }
 
-        /* Estilo base de Tarjeta Glassmorphism */
-        .card {
+        /* Navegación por Pestañas (Tabs) */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
             background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #b3b3b3;
+            font-family: inherit;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%);
+            color: #111;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Tarjeta Glassmorphism */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(15px) saturate(180%);
-            -webkit-backdrop-filter: blur(15px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: none; /* Ocultas por defecto */
+            animation: fadeIn 0.4s ease-out;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-        }
-
-        .card-title {
-            text-align: left;
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #fff;
-        }
-
-        /* === Tarjetas con Gradientes Vibrantes === */
-
-        .card.menu {
-            /* Sin gradiente de fondo, solo Glass */
-        }
-
-        /* Nueva Tarjeta de Combos con Gradiente Esmeralda */
-        .card.combos {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
-        }
-
-        .card.sauces {
-            background: linear-gradient(135deg, rgba(31, 102, 187, 0.1) 0%, rgba(98, 45, 137, 0.1) 100%);
-            grid-column: span 2; 
-        }
-
-        .card.contact {
-            background: linear-gradient(135deg, rgba(238, 119, 36, 0.1) 0%, rgba(219, 29, 90, 0.1) 100%);
-            grid-column: span 2; /* Ahora ocupa todo el ancho abajo */
-            text-align: center;
+        .card.active {
+            display: block; /* Solo se muestra la activa */
         }
 
         /* Elementos del menú */
@@ -103,7 +116,7 @@
             align-items: center;
             margin-bottom: 15px;
             font-size: 1.2em;
-            padding: 10px 0;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -112,10 +125,7 @@
             margin-bottom: 0;
         }
 
-        .item-name {
-            font-weight: 400;
-        }
-
+        .item-name { font-weight: 400; }
         .item-price {
             font-weight: 700;
             color: #D4AF37;
@@ -123,196 +133,230 @@
             margin-left: 15px;
         }
 
-        /* Estilos específicos para los Combos (Nombre + Descripción) */
-        .combo-item {
-            align-items: flex-start;
-        }
-
-        .item-details {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .item-desc {
-            font-size: 0.75em;
-            color: #b3b3b3;
-            line-height: 1.4;
-        }
+        .item-details { display: flex; flex-direction: column; gap: 5px; }
+        .item-desc { font-size: 0.8em; color: #a0a0a0; line-height: 1.4; }
 
         /* Lista de salsas */
         .sauce-list {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
         .sauce-list li {
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 18px;
+            padding: 20px;
             border-radius: 12px;
-            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1em;
-            font-weight: 400;
-        }
-
-        .sauce-list li span {
-            font-size: 2em;
-            margin-bottom: 8px;
-        }
-
-        /* Sección de Contacto */
-        .contact p {
+            text-align: center;
             font-size: 1.1em;
-            margin: 12px 0;
-            justify-content: center;
+        }
+
+        .sauce-icon { font-size: 2em; margin-bottom: 5px; }
+        .spice-level { font-size: 0.8em; margin-top: 5px; letter-spacing: 2px; }
+
+        /* Botón Flotante de WhatsApp */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
             display: flex;
             align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            animation: pulse-green 2s infinite;
         }
 
-        /* Botón de WhatsApp Moderno */
-        .btn-whatsapp {
-            display: inline-block;
-            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%);
-            color: #1a1a1a;
-            text-align: center;
-            padding: 18px 40px;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.3em;
-            margin-top: 25px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
+        .floating-btn:hover { transform: scale(1.05); }
 
-        .btn-whatsapp:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Pie de página */
+        /* Footer y Contacto */
         footer {
             text-align: center;
-            padding: 0px 20px 40px;
+            padding: 40px 20px 120px; /* Espacio extra abajo para el botón flotante */
             color: #8d99ae;
-            font-size: 0.9em;
         }
 
-        /* Adaptabilidad para celulares */
-        @media (max-width: 768px) {
-            main {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .card.sauces, .card.contact {
-                grid-column: span 1;
-            }
-            .sauce-list {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .section-title {
-                font-size: 1.6em;
-            }
-            header {
-                padding: 40px 20px 10px;
+        .info-box {
+            background: rgba(255,255,255,0.02);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes levitate {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Celulares */
+        @media (max-width: 600px) {
+            .tabs-nav { flex-direction: column; gap: 5px; }
+            .hero { height: 35vh; }
+            .floating-btn {
+                bottom: 20px; right: 20px; left: 20px;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+
+    <div class="hero">
+        <div class="hero-overlay"></div>
         <img src="kings-logo-gold.png" alt="King's Boneless Logo" class="logo">
-    </header>
+    </div>
 
     <main>
-        <section class="card menu">
-            <h2 class="card-title">Nuestras Órdenes</h2>
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="openTab('ordenes', this)">🔥 Órdenes</button>
+            <button class="tab-btn" onclick="openTab('combos', this)">👑 Combos</button>
+            <button class="tab-btn" onclick="openTab('salsas', this)">🌶️ Salsas</button>
+        </div>
+
+        <section id="ordenes" class="card active">
             <div class="menu-item">
-                <span class="item-name">Orden (250g)</span>
+                <span class="item-name">Orden Chica (250g)</span>
                 <span class="item-price">$110</span>
             </div>
             <div class="menu-item">
-                <span class="item-name">Orden (450g)</span>
+                <span class="item-name">Orden Mediana (450g)</span>
                 <span class="item-price">$190</span>
             </div>
             <div class="menu-item">
-                <span class="item-name">Orden (1kg)</span>
+                <span class="item-name">Orden Grande (1kg)</span>
                 <span class="item-price">$380</span>
             </div>
-            <div class="menu-item" style="margin-top: 20px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 20px;">
-                <span class="item-name">Orden de Papas</span>
+            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px;">
+                <span class="item-name">Orden de Papas Extras</span>
                 <span class="item-price">$45</span>
             </div>
         </section>
 
-        <section class="card combos">
-            <h2 class="card-title">Combos</h2>
-            
-            <div class="menu-item combo-item">
+        <section id="combos" class="card">
+            <div class="menu-item">
                 <div class="item-details">
                     <span class="item-name">Solitary King</span>
                     <span class="item-desc">250g boneless, 1 papas, 1 refresco</span>
                 </div>
                 <span class="item-price">$165</span>
             </div>
-
-            <div class="menu-item combo-item">
+            <div class="menu-item">
                 <div class="item-details">
                     <span class="item-name">Little King</span>
-                    <span class="item-desc">150g boneless, 1 porción de papas, 1 refresco</span>
+                    <span class="item-desc">150g boneless, 1 porción papas, 1 refresco</span>
                 </div>
                 <span class="item-price">$115</span>
             </div>
-
-            <div class="menu-item combo-item">
+            <div class="menu-item">
                 <div class="item-details">
                     <span class="item-name">Queen & King</span>
-                    <span class="item-desc">450g boneless, 1 orden de papas, 2 refrescos</span>
+                    <span class="item-desc">450g boneless, 1 orden papas, 2 refrescos</span>
                 </div>
                 <span class="item-price">$240</span>
             </div>
-
-            <div class="menu-item combo-item">
+            <div class="menu-item">
                 <div class="item-details">
                     <span class="item-name">King's Pack</span>
-                    <span class="item-desc">1kg boneless, 2 órdenes de papas, 4 refrescos</span>
+                    <span class="item-desc">1kg boneless, 2 órdenes papas, 4 refrescos</span>
                 </div>
                 <span class="item-price">$510</span>
             </div>
         </section>
 
-        <section class="card sauces">
-            <h2 class="card-title">Elige tus Salsas</h2>
+        <section id="salsas" class="card">
             <ul class="sauce-list">
-                <li><span>🥃</span> Mezcal</li>
-                <li><span>🌋</span> Xtra Hot</li>
-                <li><span>🍯</span> BBQ</li>
-                <li><span>🥭</span> Mango Habanero</li>
-                <li><span>🍊</span> Naranja Chipotle</li>
-                <li><span>🌶️</span> Tamarindo</li>
+                <li>
+                    <span class="sauce-icon">🥃</span>
+                    <span class="item-name">Mezcal</span>
+                </li>
+                <li>
+                    <span class="sauce-icon">🌋</span>
+                    <span class="item-name">Xtra Hot</span>
+                    <span class="spice-level">🌶️🌶️🌶️</span>
+                </li>
+                <li>
+                    <span class="sauce-icon">🍯</span>
+                    <span class="item-name">BBQ</span>
+                </li>
+                <li>
+                    <span class="sauce-icon">🥭</span>
+                    <span class="item-name">Mango Habanero</span>
+                    <span class="spice-level">🌶️🌶️</span>
+                </li>
+                <li>
+                    <span class="sauce-icon">🍊</span>
+                    <span class="item-name">Naranja Chipotle</span>
+                    <span class="spice-level">🌶️</span>
+                </li>
+                <li>
+                    <span class="sauce-icon">🌶️</span>
+                    <span class="item-name">Tamarindo</span>
+                </li>
             </ul>
         </section>
-
-        <section class="card contact">
-            <h2 class="card-title">Haz tu Pedido</h2>
-            <p>📍 Entregas en Durango</p>
-            <p>🕒 Jueves a Domingo: 6:00 PM - 11:00 PM</p>
-            
-            <a href="https://wa.me/526181557765" class="btn-whatsapp">📲 Pedir por WhatsApp</a>
-        </section>
-
     </main>
 
     <footer>
+        <div class="info-box">
+            <h3 style="margin-top:0;">👑 Únete a la Corte</h3>
+            <p>📍 Entregas en Durango</p>
+            <p>🕒 Jueves a Domingo | 6:00 PM - 11:00 PM</p>
+            <p style="font-size: 0.9em; margin-top: 15px;">Síguenos en Instagram: <strong>@KingsBoneless</strong></p>
+        </div>
         <p>&copy; 2026 King's Boneless. Todos los derechos reservados.</p>
     </footer>
+
+    <a href="https://wa.me/526181557765" class="floating-btn" target="_blank">
+        📲 Haz tu Pedido
+    </a>
+
+    <script>
+        function openTab(tabName, btnElement) {
+            // Ocultar todas las tarjetas
+            let cards = document.getElementsByClassName("card");
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].classList.remove("active");
+            }
+            // Quitar clase active a todos los botones
+            let btns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            // Mostrar tarjeta seleccionada y activar botón
+            document.getElementById(tabName).classList.add("active");
+            btnElement.classList.add("active");
+        }
+    </script>
 </body>
 </html>
