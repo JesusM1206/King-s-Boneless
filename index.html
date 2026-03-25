@@ -6,102 +6,138 @@
     <title>King's Boneless</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Globales (Esquema Oscuro y Dorado) */
+        /* Estilos Globales (Estilo Glassmorphism Oscuro y Moderno) */
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #1a1a1a;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #1a1a1a 0%, #111 90%);
             color: #e6e6e6;
             margin: 0;
             padding: 0;
-            background-image: url('gold-dust-pattern.png');
-            background-repeat: repeat;
+            overflow-x: hidden;
+            background-attachment: fixed;
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
             color: #D4AF37;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            font-weight: 700;
         }
 
-        /* Encabezado con Logotipo */
+        /* Encabezado con Logotipo simplificado */
         header {
             text-align: center;
-            padding: 50px 20px 20px;
+            padding: 60px 20px 20px;
         }
 
         .logo {
-            max-width: 300px;
+            max-width: 280px;
             width: 100%;
             height: auto;
         }
 
-        /* Contenedor principal de secciones */
+        /* Contenedor principal de tarjetas */
         main {
-            max-width: 700px;
+            max-width: 950px; 
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
         }
 
-        /* Estilo general de las secciones */
-        section {
-            background-color: #222;
-            border: 2px solid #D4AF37;
-            border-radius: 15px;
+        /* Estilo base de Tarjeta Glassmorphism */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
             padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Títulos de sección con degradado */
-        .section-title {
-            text-align: center;
-            font-size: 2.2em;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-title {
+            text-align: left;
+            font-size: 1.8em;
             margin-top: 0;
-            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 50%, #D4AF37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            color: #fff;
         }
 
-        /* Remolinos ornamentados simulados con SVG */
-        .section::before, .section::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,50 C20,30 80,70 100,50' stroke='%23D4AF37' stroke-width='3' fill='none'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-size: contain;
-            opacity: 0.7;
+        /* === Tarjetas con Gradientes Vibrantes === */
+
+        .card.menu {
+            /* Sin gradiente de fondo, solo Glass */
         }
 
-        .section::before {
-            top: 20px;
-            left: 20px;
-            transform: rotate(-10deg);
+        /* Nueva Tarjeta de Combos con Gradiente Esmeralda */
+        .card.combos {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
         }
 
-        .section::after {
-            bottom: 20px;
-            right: 20px;
-            transform: rotate(170deg);
+        .card.sauces {
+            background: linear-gradient(135deg, rgba(31, 102, 187, 0.1) 0%, rgba(98, 45, 137, 0.1) 100%);
+            grid-column: span 2; 
+        }
+
+        .card.contact {
+            background: linear-gradient(135deg, rgba(238, 119, 36, 0.1) 0%, rgba(219, 29, 90, 0.1) 100%);
+            grid-column: span 2; /* Ahora ocupa todo el ancho abajo */
+            text-align: center;
         }
 
         /* Elementos del menú */
         .menu-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .item-name {
+            font-weight: 400;
         }
 
         .item-price {
-            font-weight: bold;
-            color: #F8E571;
+            font-weight: 700;
+            color: #D4AF37;
+            font-size: 1.3em;
+            margin-left: 15px;
+        }
+
+        /* Estilos específicos para los Combos (Nombre + Descripción) */
+        .combo-item {
+            align-items: flex-start;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .item-desc {
+            font-size: 0.75em;
+            color: #b3b3b3;
+            line-height: 1.4;
         }
 
         /* Lista de salsas */
@@ -109,73 +145,84 @@
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
 
         .sauce-list li {
-            background-color: #333;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 15px;
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 18px;
+            border-radius: 12px;
             text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.1em;
+            font-size: 1em;
+            font-weight: 400;
         }
 
         .sauce-list li span {
-            margin-right: 10px;
-            font-size: 1.3em;
+            font-size: 2em;
+            margin-bottom: 8px;
         }
 
         /* Sección de Contacto */
         .contact p {
-            font-size: 1.2em;
-            margin: 15px 0;
-            text-align: center;
+            font-size: 1.1em;
+            margin: 12px 0;
+            justify-content: center;
+            display: flex;
+            align-items: center;
         }
 
-        /* Botón de WhatsApp Dorado */
+        /* Botón de WhatsApp Moderno */
         .btn-whatsapp {
-            display: block;
-            background-color: #D4AF37;
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%);
             color: #1a1a1a;
             text-align: center;
-            padding: 18px;
+            padding: 18px 40px;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
+            border-radius: 12px;
+            font-weight: 700;
             font-size: 1.3em;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            margin-top: 25px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .btn-whatsapp:hover {
-            background-color: #F8E571;
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
 
         /* Pie de página */
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 0px 20px 40px;
             color: #8d99ae;
             font-size: 0.9em;
         }
 
         /* Adaptabilidad para celulares */
-        @media (max-width: 600px) {
-            .sauce-list {
+        @media (max-width: 768px) {
+            main {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .section::before, .section::after {
-                width: 30px;
-                height: 30px;
+            .card.sauces, .card.contact {
+                grid-column: span 1;
+            }
+            .sauce-list {
+                grid-template-columns: repeat(2, 1fr);
             }
             .section-title {
-                font-size: 1.8em;
+                font-size: 1.6em;
+            }
+            header {
+                padding: 40px 20px 10px;
             }
         }
     </style>
@@ -186,24 +233,64 @@
     </header>
 
     <main>
-        <section class="menu">
-            <h2 class="section-title">Nuestras Órdenes</h2>
+        <section class="card menu">
+            <h2 class="card-title">Nuestras Órdenes</h2>
             <div class="menu-item">
                 <span class="item-name">Orden (250g)</span>
-                <span class="item-price">$110.00</span>
+                <span class="item-price">$110</span>
             </div>
             <div class="menu-item">
                 <span class="item-name">Orden (450g)</span>
-                <span class="item-price">$190.00</span>
+                <span class="item-price">$190</span>
             </div>
             <div class="menu-item">
                 <span class="item-name">Orden (1kg)</span>
-                <span class="item-price">$380.00</span>
+                <span class="item-price">$380</span>
+            </div>
+            <div class="menu-item" style="margin-top: 20px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 20px;">
+                <span class="item-name">Orden de Papas</span>
+                <span class="item-price">$45</span>
             </div>
         </section>
 
-        <section class="sauces">
-            <h2 class="section-title">Elige tus Salsas</h2>
+        <section class="card combos">
+            <h2 class="card-title">Combos</h2>
+            
+            <div class="menu-item combo-item">
+                <div class="item-details">
+                    <span class="item-name">Solitary King</span>
+                    <span class="item-desc">250g boneless, 1 papas, 1 refresco</span>
+                </div>
+                <span class="item-price">$165</span>
+            </div>
+
+            <div class="menu-item combo-item">
+                <div class="item-details">
+                    <span class="item-name">Little King</span>
+                    <span class="item-desc">150g boneless, 1 porción de papas, 1 refresco</span>
+                </div>
+                <span class="item-price">$115</span>
+            </div>
+
+            <div class="menu-item combo-item">
+                <div class="item-details">
+                    <span class="item-name">Queen & King</span>
+                    <span class="item-desc">450g boneless, 1 orden de papas, 2 refrescos</span>
+                </div>
+                <span class="item-price">$240</span>
+            </div>
+
+            <div class="menu-item combo-item">
+                <div class="item-details">
+                    <span class="item-name">King's Pack</span>
+                    <span class="item-desc">1kg boneless, 2 órdenes de papas, 4 refrescos</span>
+                </div>
+                <span class="item-price">$510</span>
+            </div>
+        </section>
+
+        <section class="card sauces">
+            <h2 class="card-title">Elige tus Salsas</h2>
             <ul class="sauce-list">
                 <li><span>🥃</span> Mezcal</li>
                 <li><span>🌋</span> Xtra Hot</li>
@@ -214,13 +301,14 @@
             </ul>
         </section>
 
-        <section class="contact">
-            <h2 class="section-title">Haz tu Pedido</h2>
+        <section class="card contact">
+            <h2 class="card-title">Haz tu Pedido</h2>
             <p>📍 Entregas en Durango</p>
             <p>🕒 Jueves a Domingo: 6:00 PM - 11:00 PM</p>
             
             <a href="https://wa.me/526181557765" class="btn-whatsapp">📲 Pedir por WhatsApp</a>
         </section>
+
     </main>
 
     <footer>
