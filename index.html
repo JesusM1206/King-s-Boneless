@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King's Boneless - Menú Real</title>
+    <title>King's Boneless</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Estilos Globales (Esquema Oscuro y Dorado) */
         body {
-            font-family: 'Open Sans', sans-serif; /* Fuente clara para texto */
-            background-color: #1a1a1a; /* Gris oscuro/carbón texturizado */
-            color: #e6e6e6; /* Texto claro para contraste */
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a1a1a;
+            color: #e6e6e6;
             margin: 0;
             padding: 0;
-            background-image: url('gold-dust-pattern.png'); /* Patrón sutil de polvo de estrellas dorado (opcional) */
+            background-image: url('gold-dust-pattern.png');
             background-repeat: repeat;
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif; /* Fuente serif elegante para títulos */
-            color: #D4AF37; /* Color base Oro Metálico */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Sombra suave para legibilidad */
+            font-family: 'Playfair Display', serif;
+            color: #D4AF37;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         /* Encabezado con Logotipo */
         header {
             text-align: center;
-            padding: 50px 20px;
+            padding: 50px 20px 20px;
         }
 
         .logo {
-            max-width: 300px; /* Ancho máximo para el logo */
-            width: 100%; /* Adaptable */
+            max-width: 300px;
+            width: 100%;
             height: auto;
         }
 
@@ -44,18 +44,18 @@
             padding: 0 20px;
         }
 
-        /* Estilo general de las secciones (Menú y Contacto) */
+        /* Estilo general de las secciones */
         section {
-            background-color: #222; /* Fondo de sección ligeramente más claro */
-            border: 2px solid #D4AF37; /* Marco circular dorado simulado */
+            background-color: #222;
+            border: 2px solid #D4AF37;
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative; /* Para remolinos ornamentados */
+            position: relative;
         }
 
-        /* Títulos de sección con degradado de texto metálico simualdo */
+        /* Títulos de sección con degradado */
         .section-title {
             text-align: center;
             font-size: 2.2em;
@@ -65,7 +65,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Remolinos ornamentados simulados con pseudo-elementos (SVG incrustado) */
+        /* Remolinos ornamentados simulados con SVG */
         .section::before, .section::after {
             content: '';
             position: absolute;
@@ -95,20 +95,13 @@
             justify-content: space-between;
             margin-bottom: 20px;
             font-size: 1.3em;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Línea divisoria sutil dorada */
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
             padding-bottom: 10px;
         }
 
         .item-price {
             font-weight: bold;
-            color: #F8E571; /* Oro más brillante para el precio */
-        }
-
-        .menu-note {
-            font-style: italic;
-            font-size: 0.9em;
-            color: #b3b3b3;
-            text-align: center;
+            color: #F8E571;
         }
 
         /* Lista de salsas */
@@ -116,7 +109,7 @@
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Dos columnas en dispositivos más grandes */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
@@ -137,18 +130,6 @@
             font-size: 1.3em;
         }
 
-        /* Cúmulo de nuggets dorados simulados */
-        .nugget-cluster {
-            display: block;
-            width: 150px;
-            height: 80px;
-            margin: 30px auto;
-            background-image: url('kings-nugget-cluster-transparent.png'); /* Reemplazar con el activo real */
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
         /* Sección de Contacto */
         .contact p {
             font-size: 1.2em;
@@ -159,8 +140,8 @@
         /* Botón de WhatsApp Dorado */
         .btn-whatsapp {
             display: block;
-            background-color: #D4AF37; /* Color de botón oro metálico */
-            color: #1a1a1a; /* Texto oscuro para contraste */
+            background-color: #D4AF37;
+            color: #1a1a1a;
             text-align: center;
             padding: 18px;
             text-decoration: none;
@@ -168,12 +149,12 @@
             font-weight: bold;
             font-size: 1.3em;
             margin-top: 30px;
-            transition: background-color 0.3s ease; /* Efecto suave al pasar el mouse */
+            transition: background-color 0.3s ease;
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
 
         .btn-whatsapp:hover {
-            background-color: #F8E571; /* Oro más brillante al pasar el mouse */
+            background-color: #F8E571;
         }
 
         /* Pie de página */
@@ -184,10 +165,10 @@
             font-size: 0.9em;
         }
 
-        /* Medios para celulares (Adaptabilidad) */
+        /* Adaptabilidad para celulares */
         @media (max-width: 600px) {
             .sauce-list {
-                grid-template-columns: 1fr; /* Una columna en celulares */
+                grid-template-columns: 1fr;
             }
             .section::before, .section::after {
                 width: 30px;
@@ -201,44 +182,44 @@
 </head>
 <body>
     <header>
-        <img src="kings-logo-gold.png" alt="King's Boneless Logo with Crown" class="logo">
+        <img src="kings-logo-gold.png" alt="King's Boneless Logo" class="logo">
     </header>
 
     <main>
         <section class="menu">
-            <h2 class="section-title">Nuestras Órdenes Reales</h2>
+            <h2 class="section-title">Nuestras Órdenes</h2>
             <div class="menu-item">
-                <span class="item-name">Orden Chica (250g)</span>
-                <span class="item-price">$XX.00</span>
+                <span class="item-name">Orden (250g)</span>
+                <span class="item-price">$110.00</span>
             </div>
             <div class="menu-item">
-                <span class="item-name">Orden Mediana (500g)</span>
-                <span class="item-price">$XX.00</span>
+                <span class="item-name">Orden (450g)</span>
+                <span class="item-price">$190.00</span>
             </div>
             <div class="menu-item">
-                <span class="item-name">Orden Grande (1kg)</span>
-                <span class="item-price">$XX.00</span>
+                <span class="item-name">Orden (1kg)</span>
+                <span class="item-price">$380.00</span>
             </div>
-            <p class="menu-note">*Todas las órdenes incluyen papas a la francesa y aderezo ranch.</p>
         </section>
 
         <section class="sauces">
             <h2 class="section-title">Elige tus Salsas</h2>
             <ul class="sauce-list">
-                <li><span>🔥</span> Búfalo (Clásica)</li>
-                <li><span>🍯</span> BBQ (Dulce y ahumada)</li>
-                <li><span>🥭</span> Mango Habanero (Picosita)</li>
-                <li><span>🧄</span> Parmesano y Ajo</li>
+                <li><span>🥃</span> Mezcal</li>
+                <li><span>🌋</span> Xtra Hot</li>
+                <li><span>🍯</span> BBQ</li>
+                <li><span>🥭</span> Mango Habanero</li>
+                <li><span>🍊</span> Naranja Chipotle</li>
+                <li><span>🌶️</span> Tamarindo</li>
             </ul>
-            <div class="nugget-cluster"></div>
         </section>
 
         <section class="contact">
             <h2 class="section-title">Haz tu Pedido</h2>
-            <p>📍 Entregas Reales en Durango</p>
+            <p>📍 Entregas en Durango</p>
             <p>🕒 Jueves a Domingo: 6:00 PM - 11:00 PM</p>
             
-            <a href="https://wa.me/52XXXXXXXXXX" class="btn-whatsapp">📲 Pedir por WhatsApp</a>
+            <a href="https://wa.me/526181557765" class="btn-whatsapp">📲 Pedir por WhatsApp</a>
         </section>
     </main>
 
