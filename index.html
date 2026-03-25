@@ -8,27 +8,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Globales (Estilo Glassmorphism Oscuro y Moderno) */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #111; /* Fondo oscuro base */
+            background-color: #111;
             color: #e6e6e6;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            color: #D4AF37; /* Dorado para títulos principales */
-            font-weight: 700;
-        }
-
-        /* Hero Section (Fondo con la foto antojable) */
+        /* HERO SECTION CON FOTO DE BONELESS REALES */
         .hero {
             position: relative;
-            height: 45vh; /* Ocupa el 45% de la pantalla */
-            /* === NUEVA FOTO CORREGIDA: BONELESS REDONDOS Y BIEN BAÑADOS === */
-            background-image: url('https://images.unsplash.com/photo-1596791654160-580a1ae28c46?q=80&w=1974&auto=format&fit=crop'); /* Foto profesional libre de derechos */
+            height: 45vh;
+            /* Esta foto es de boneless redondos, crujientes y MUY bañados */
+            background-image: url('https://images.unsplash.com/photo-1567622646631-0176d6537385?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -36,11 +30,10 @@
             justify-content: center;
         }
 
-        /* Capa oscura sobre la foto para que resalte el logo */
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(17,17,17,0.3) 0%, rgba(17,17,17,1) 100%);
+            background: linear-gradient(to bottom, rgba(17,17,17,0.2) 0%, rgba(17,17,17,1) 100%);
         }
 
         .logo {
@@ -48,26 +41,23 @@
             z-index: 2;
             max-width: 250px;
             width: 80%;
-            /* Animaciones sutiles: entrada y flotación */
             animation: fadeInUp 1s ease-out forwards, levitate 3s ease-in-out infinite 1s;
         }
 
-        /* Contenedor principal de tarjetas */
         main {
             max-width: 800px;
-            margin: -40px auto 100px; /* Sube un poco para encimarse en la foto */
+            margin: -40px auto 100px;
             padding: 0 20px;
             position: relative;
             z-index: 3;
         }
 
-        /* Navegación por Pestañas (Tabs) */
         .tabs-nav {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.05); /* Fondo translúcido */
+            background: rgba(255, 255, 255, 0.05);
             padding: 8px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
@@ -90,38 +80,25 @@
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%); /* Dorado con gradiente moderno */
-            color: #111; /* Texto oscuro para contraste */
+            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%);
+            color: #111;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Tarjeta Glassmorphism (Efecto de vidrio) */
         .card {
-            background: rgba(255, 255, 255, 0.03); /* Fondo translúcido muy suave */
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            display: none; /* Ocultas por defecto */
-            animation: fadeIn 0.4s ease-out; /* Entrada suave al cambiar pestaña */
+            display: none;
+            animation: fadeIn 0.4s ease-out;
         }
 
-        .card.active {
-            display: block; /* Solo se muestra la tarjeta activa */
-        }
+        .card.active { display: block; }
 
-        /* Títulos de tarjeta */
-        .card-title {
-            text-align: left;
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #fff;
-        }
-
-        /* Elementos del menú (Precios y Combos) */
         .menu-item {
             display: flex;
             justify-content: space-between;
@@ -129,79 +106,38 @@
             margin-bottom: 15px;
             font-size: 1.2em;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea divisoria sutil */
-        }
-
-        .menu-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .item-name {
-            font-weight: 400;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .item-price {
             font-weight: 700;
-            color: #D4AF37; /* Precio en dorado */
+            color: #D4AF37;
             font-size: 1.3em;
-            margin-left: 15px;
         }
 
-        /* Estilos para detalles de Combos */
-        .item-details {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+        .item-desc { font-size: 0.8em; color: #a0a0a0; margin-top: 4px; display: block; }
 
-        .item-desc {
-            font-size: 0.8em;
-            color: #a0a0a0;
-            line-height: 1.4;
-        }
-
-        /* Lista de salsas */
         .sauce-list {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
         .sauce-list li {
             background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 12px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1em;
-            font-weight: 400;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .sauce-icon {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
-
-        /* Medidor de picor (chilitos) */
-        .spice-level {
-            font-size: 0.8em;
-            margin-top: 5px;
-            letter-spacing: 2px;
-        }
-
-        /* Botón Flotante de WhatsApp */
         .floating-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); /* Colores oficiales WhatsApp */
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
             padding: 15px 25px;
             border-radius: 50px;
@@ -213,68 +149,18 @@
             gap: 10px;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
-            transition: transform 0.3s ease;
-            animation: pulse-green 2s infinite; /* Latido verde sutil */
+            animation: pulse-green 2s infinite;
         }
 
-        .floating-btn:hover {
-            transform: scale(1.05);
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes levitate { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-        /* Pie de página y contacto */
-        footer {
-            text-align: center;
-            padding: 40px 20px 120px; /* Espacio extra abajo para el botón flotante */
-            color: #8d99ae;
-        }
-
-        .info-box {
-            background: rgba(255,255,255,0.02);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px dashed rgba(212, 175, 55, 0.3);
-        }
-
-        /* === ANIMACIONES === */
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes levitate {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0); }
-        }
-
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Celulares */
         @media (max-width: 600px) {
-            .tabs-nav {
-                flex-direction: column; /* Pestañas una sobre otra en celular */
-                gap: 5px;
-            }
-            .hero {
-                height: 35vh; /* Menos altura en celular */
-            }
-            .floating-btn {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                justify-content: center; /* Botón ocupa todo el ancho abajo */
-            }
+            .tabs-nav { flex-direction: column; }
+            .floating-btn { bottom: 20px; right: 20px; left: 20px; justify-content: center; }
+            .hero { height: 40vh; }
         }
     </style>
 </head>
@@ -293,115 +179,61 @@
         </div>
 
         <section id="ordenes" class="card active">
-            <div class="menu-item">
-                <span class="item-name">Orden Chica (250g)</span>
-                <span class="item-price">$110</span>
-            </div>
-            <div class="menu-item">
-                <span class="item-name">Orden Mediana (450g)</span>
-                <span class="item-price">$190</span>
-            </div>
-            <div class="menu-item">
-                <span class="item-name">Orden Grande (1kg)</span>
-                <span class="item-price">$380</span>
-            </div>
-            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px; padding-top: 20px;">
-                <span class="item-name">Orden de Papas Extras</span>
-                <span class="item-price">$45</span>
+            <div class="menu-item"><span>250g</span> <span class="item-price">$110</span></div>
+            <div class="menu-item"><span>450g</span> <span class="item-price">$190</span></div>
+            <div class="menu-item"><span>1kg</span> <span class="item-price">$380</span></div>
+            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px;">
+                <span>Orden de Papas</span> <span class="item-price">$45</span>
             </div>
         </section>
 
         <section id="combos" class="card">
             <div class="menu-item">
-                <div class="item-details">
-                    <span class="item-name">Solitary King</span>
-                    <span class="item-desc">250g boneless, 1 papas, 1 refresco</span>
-                </div>
+                <div><span>Solitary King</span><span class="item-desc">250g, 1 papas, 1 refresco</span></div>
                 <span class="item-price">$165</span>
             </div>
             <div class="menu-item">
-                <div class="item-details">
-                    <span class="item-name">Little King</span>
-                    <span class="item-desc">150g boneless, 1 porción papas, 1 refresco</span>
-                </div>
+                <div><span>Little King</span><span class="item-desc">150g, 1 porción papas, 1 refresco</span></div>
                 <span class="item-price">$115</span>
             </div>
             <div class="menu-item">
-                <div class="item-details">
-                    <span class="item-name">Queen & King</span>
-                    <span class="item-desc">450g boneless, 1 orden papas, 2 refrescos</span>
-                </div>
+                <div><span>Queen & King</span><span class="item-desc">450g, 1 papas, 2 refrescos</span></div>
                 <span class="item-price">$240</span>
             </div>
             <div class="menu-item">
-                <div class="item-details">
-                    <span class="item-name">King's Pack</span>
-                    <span class="item-desc">1kg boneless, 2 órdenes papas, 4 refrescos</span>
-                </div>
+                <div><span>King's Pack</span><span class="item-desc">1kg, 2 papas, 4 refrescos</span></div>
                 <span class="item-price">$510</span>
             </div>
         </section>
 
         <section id="salsas" class="card">
             <ul class="sauce-list">
-                <li>
-                    <span class="sauce-icon">🥃</span>
-                    <span class="item-name">Mezcal</span>
-                </li>
-                <li>
-                    <span class="sauce-icon">🌋</span>
-                    <span class="item-name">Xtra Hot</span>
-                    <span class="spice-level">🌶️🌶️🌶️</span>
-                </li>
-                <li>
-                    <span class="sauce-icon">🍯</span>
-                    <span class="item-name">BBQ</span>
-                </li>
-                <li>
-                    <span class="sauce-icon">🥭</span>
-                    <span class="item-name">Mango Habanero</span>
-                    <span class="spice-level">🌶️🌶️</span>
-                </li>
-                <li>
-                    <span class="sauce-icon">🍊</span>
-                    <span class="item-name">Naranja Chipotle</span>
-                    <span class="spice-level">🌶️</span>
-                </li>
-                <li>
-                    <span class="sauce-icon">🌶️</span>
-                    <span class="item-name">Tamarindo</span>
-                </li>
+                <li><span>🥃 Mezcal</span></li>
+                <li><span>🌋 Xtra Hot</span></li>
+                <li><span>🍯 BBQ</span></li>
+                <li><span>🥭 Mango Habanero</span></li>
+                <li><span>🍊 Naranja Chipotle</span></li>
+                <li><span>🌶️ Tamarindo</span></li>
             </ul>
         </section>
     </main>
 
-    <footer>
-        <div class="info-box">
-            <h3 style="margin-top:0;">👑 Únete a la Corte</h3>
-            <p>📍 Entregas en Durango</p>
-            <p>🕒 Jueves a Domingo | 6:00 PM - 11:00 PM</p>
-            <p style="font-size: 0.9em; margin-top: 15px;">Síguenos en Instagram: <strong>@KingsBoneless</strong></p>
+    <footer style="text-align:center; padding: 40px 20px 120px;">
+        <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px dashed #D4AF37;">
+            <h3 style="margin-top:0;">📍 Durango, Dgo.</h3>
+            <p>Jueves a Domingo | 6:00 PM - 11:00 PM</p>
         </div>
-        <p>&copy; 2026 King's Boneless. Todos los derechos reservados.</p>
+        <p style="margin-top: 20px; color: #666;">&copy; 2026 King's Boneless</p>
     </footer>
 
-    <a href="https://wa.me/526181557765" class="floating-btn" target="_blank">
-        📲 Haz tu Pedido
-    </a>
+    <a href="https://wa.me/526181557765" class="floating-btn" target="_blank">📲 Haz tu Pedido</a>
 
     <script>
         function openTab(tabName, btnElement) {
-            // 1. Ocultar todas las tarjetas (cards)
             let cards = document.getElementsByClassName("card");
-            for (let i = 0; i < cards.length; i++) {
-                cards[i].classList.remove("active");
-            }
-            // 2. Quitar clase 'active' a todos los botones
+            for (let i = 0; i < cards.length; i++) cards[i].classList.remove("active");
             let btns = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
-            }
-            // 3. Mostrar la tarjeta seleccionada y activar su botón
+            for (let i = 0; i < btns.length; i++) btns[i].classList.remove("active");
             document.getElementById(tabName).classList.add("active");
             btnElement.classList.add("active");
         }
