@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -17,14 +19,11 @@
             overflow-x: hidden;
         }
 
-        /* HERO SECTION CON FOTO DE BONELESS REALES */
+        /* Hero Section */
         .hero {
             position: relative;
-            height: 45vh;
-            /* Esta foto es de boneless redondos, crujientes y MUY bañados */
-            background-image: url('https://images.unsplash.com/photo-1567622646631-0176d6537385?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            height: 40vh;
+            background-color: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -52,6 +51,7 @@
             z-index: 3;
         }
 
+        /* Tabs Navigation */
         .tabs-nav {
             display: flex;
             justify-content: center;
@@ -109,12 +109,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .item-price {
-            font-weight: 700;
-            color: #D4AF37;
-            font-size: 1.3em;
-        }
-
+        .item-price { font-weight: 700; color: #D4AF37; font-size: 1.3em; }
         .item-desc { font-size: 0.8em; color: #a0a0a0; margin-top: 4px; display: block; }
 
         .sauce-list {
@@ -133,6 +128,27 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* Estilos de Redes Sociales */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            color: #e6e6e6;
+            font-size: 2em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: #D4AF37;
+            transform: translateY(-5px);
+        }
+
+        /* Floating WhatsApp Button */
         .floating-btn {
             position: fixed;
             bottom: 30px;
@@ -160,7 +176,7 @@
         @media (max-width: 600px) {
             .tabs-nav { flex-direction: column; }
             .floating-btn { bottom: 20px; right: 20px; left: 20px; justify-content: center; }
-            .hero { height: 40vh; }
+            .hero { height: 35vh; }
         }
     </style>
 </head>
@@ -179,29 +195,29 @@
         </div>
 
         <section id="ordenes" class="card active">
-            <div class="menu-item"><span>250g</span> <span class="item-price">$110</span></div>
-            <div class="menu-item"><span>450g</span> <span class="item-price">$190</span></div>
-            <div class="menu-item"><span>1kg</span> <span class="item-price">$380</span></div>
-            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px;">
-                <span>Orden de Papas</span> <span class="item-price">$45</span>
+            <div class="menu-item"><span>Orden Chica (250g)</span> <span class="item-price">$110</span></div>
+            <div class="menu-item"><span>Orden Mediana (450g)</span> <span class="item-price">$190</span></div>
+            <div class="menu-item"><span>Orden Grande (1kg)</span> <span class="item-price">$380</span></div>
+            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px; padding-top: 10px;">
+                <span>Orden de Papas Extras</span> <span class="item-price">$45</span>
             </div>
         </section>
 
         <section id="combos" class="card">
             <div class="menu-item">
-                <div><span>Solitary King</span><span class="item-desc">250g, 1 papas, 1 refresco</span></div>
+                <div><span>Solitary King</span><span class="item-desc">250g boneless, 1 papas, 1 refresco</span></div>
                 <span class="item-price">$165</span>
             </div>
             <div class="menu-item">
-                <div><span>Little King</span><span class="item-desc">150g, 1 porción papas, 1 refresco</span></div>
+                <div><span>Little King</span><span class="item-desc">150g boneless, 1 porción papas, 1 refresco</span></div>
                 <span class="item-price">$115</span>
             </div>
             <div class="menu-item">
-                <div><span>Queen & King</span><span class="item-desc">450g, 1 papas, 2 refrescos</span></div>
+                <div><span>Queen & King</span><span class="item-desc">450g boneless, 1 orden papas, 2 refrescos</span></div>
                 <span class="item-price">$240</span>
             </div>
             <div class="menu-item">
-                <div><span>King's Pack</span><span class="item-desc">1kg, 2 papas, 4 refrescos</span></div>
+                <div><span>King's Pack</span><span class="item-desc">1kg boneless, 2 órdenes papas, 4 refrescos</span></div>
                 <span class="item-price">$510</span>
             </div>
         </section>
@@ -219,11 +235,21 @@
     </main>
 
     <footer style="text-align:center; padding: 40px 20px 120px;">
-        <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 15px; border: 1px dashed #D4AF37;">
-            <h3 style="margin-top:0;">📍 Durango, Dgo.</h3>
-            <p>Jueves a Domingo | 6:00 PM - 11:00 PM</p>
+        <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px dashed #D4AF37;">
+            <h3 style="margin-top:0;">👑 Únete a la Corte</h3>
+            <p>📍 Entregas en Durango, Dgo.</p>
+            <p>🕒 Jueves a Domingo | 6:00 PM - 11:00 PM</p>
+            
+            <div class="social-container">
+                <a href="https://www.facebook.com/share/1G4jFiSRVu/" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/kingsbnlesss?igsh=MmJ3NHdyczBkNjd3" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
         </div>
-        <p style="margin-top: 20px; color: #666;">&copy; 2026 King's Boneless</p>
+        <p style="margin-top: 30px; color: #666; font-size: 0.8em;">&copy; 2026 King's Boneless. Todos los derechos reservados.</p>
     </footer>
 
     <a href="https://wa.me/526181557765" class="floating-btn" target="_blank">📲 Haz tu Pedido</a>
