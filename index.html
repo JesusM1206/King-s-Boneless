@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Globales */
+        /* Estilos Globales (Estilo Glassmorphism Oscuro y Moderno) */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #111;
+            background-color: #111; /* Fondo oscuro base */
             color: #e6e6e6;
             margin: 0;
             padding: 0;
@@ -19,16 +19,16 @@
         }
 
         h1, h2, h3 {
-            color: #D4AF37;
+            color: #D4AF37; /* Dorado para títulos principales */
             font-weight: 700;
         }
 
-        /* Hero Section (Fondo con foto antojable) */
+        /* Hero Section (Fondo con la foto antojable) */
         .hero {
             position: relative;
             height: 45vh; /* Ocupa el 45% de la pantalla */
-            /* === NUEVA FOTO CORREGIDA DE BONELESS REALES === */
-            background-image: url('image_0.png'); /* Usamos la foto generated de boneless reales */
+            /* === NUEVA FOTO CORREGIDA: BONELESS REDONDOS Y BIEN BAÑADOS === */
+            background-image: url('https://images.unsplash.com/photo-1596791654160-580a1ae28c46?q=80&w=1974&auto=format&fit=crop'); /* Foto profesional libre de derechos */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -48,10 +48,11 @@
             z-index: 2;
             max-width: 250px;
             width: 80%;
+            /* Animaciones sutiles: entrada y flotación */
             animation: fadeInUp 1s ease-out forwards, levitate 3s ease-in-out infinite 1s;
         }
 
-        /* Contenedor principal */
+        /* Contenedor principal de tarjetas */
         main {
             max-width: 800px;
             margin: -40px auto 100px; /* Sube un poco para encimarse en la foto */
@@ -66,10 +67,11 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.05); /* Fondo translúcido */
             padding: 8px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -88,14 +90,14 @@
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%);
-            color: #111;
+            background: linear-gradient(135deg, #D4AF37 0%, #F8E571 100%); /* Dorado con gradiente moderno */
+            color: #111; /* Texto oscuro para contraste */
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Tarjeta Glassmorphism */
+        /* Tarjeta Glassmorphism (Efecto de vidrio) */
         .card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.03); /* Fondo translúcido muy suave */
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -103,14 +105,23 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: none; /* Ocultas por defecto */
-            animation: fadeIn 0.4s ease-out;
+            animation: fadeIn 0.4s ease-out; /* Entrada suave al cambiar pestaña */
         }
 
         .card.active {
-            display: block; /* Solo se muestra la activa */
+            display: block; /* Solo se muestra la tarjeta activa */
         }
 
-        /* Elementos del menú */
+        /* Títulos de tarjeta */
+        .card-title {
+            text-align: left;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        /* Elementos del menú (Precios y Combos) */
         .menu-item {
             display: flex;
             justify-content: space-between;
@@ -118,7 +129,7 @@
             margin-bottom: 15px;
             font-size: 1.2em;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Línea divisoria sutil */
         }
 
         .menu-item:last-child {
@@ -126,23 +137,36 @@
             margin-bottom: 0;
         }
 
-        .item-name { font-weight: 400; }
+        .item-name {
+            font-weight: 400;
+        }
+
         .item-price {
             font-weight: 700;
-            color: #D4AF37;
+            color: #D4AF37; /* Precio en dorado */
             font-size: 1.3em;
             margin-left: 15px;
         }
 
-        .item-details { display: flex; flex-direction: column; gap: 5px; }
-        .item-desc { font-size: 0.8em; color: #a0a0a0; line-height: 1.4; }
+        /* Estilos para detalles de Combos */
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .item-desc {
+            font-size: 0.8em;
+            color: #a0a0a0;
+            line-height: 1.4;
+        }
 
         /* Lista de salsas */
         .sauce-list {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
             gap: 15px;
         }
 
@@ -151,23 +175,33 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 12px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
             font-size: 1.1em;
+            font-weight: 400;
         }
 
-        .sauce-icon { font-size: 2em; margin-bottom: 5px; }
-        .spice-level { font-size: 0.8em; margin-top: 5px; letter-spacing: 2px; }
+        .sauce-icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        /* Medidor de picor (chilitos) */
+        .spice-level {
+            font-size: 0.8em;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
 
         /* Botón Flotante de WhatsApp */
         .floating-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); /* Colores oficiales WhatsApp */
             color: white;
             padding: 15px 25px;
             border-radius: 50px;
@@ -180,12 +214,14 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             transition: transform 0.3s ease;
-            animation: pulse-green 2s infinite;
+            animation: pulse-green 2s infinite; /* Latido verde sutil */
         }
 
-        .floating-btn:hover { transform: scale(1.05); }
+        .floating-btn:hover {
+            transform: scale(1.05);
+        }
 
-        /* Footer y Contacto */
+        /* Pie de página y contacto */
         footer {
             text-align: center;
             padding: 40px 20px 120px; /* Espacio extra abajo para el botón flotante */
@@ -200,20 +236,24 @@
             border: 1px dashed rgba(212, 175, 55, 0.3);
         }
 
-        /* Animaciones */
+        /* === ANIMACIONES === */
+        
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         @keyframes levitate {
             0% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
             100% { transform: translateY(0); }
         }
+
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -222,11 +262,18 @@
 
         /* Celulares */
         @media (max-width: 600px) {
-            .tabs-nav { flex-direction: column; gap: 5px; }
-            .hero { height: 35vh; }
+            .tabs-nav {
+                flex-direction: column; /* Pestañas una sobre otra en celular */
+                gap: 5px;
+            }
+            .hero {
+                height: 35vh; /* Menos altura en celular */
+            }
             .floating-btn {
-                bottom: 20px; right: 20px; left: 20px;
-                justify-content: center;
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                justify-content: center; /* Botón ocupa todo el ancho abajo */
             }
         }
     </style>
@@ -258,7 +305,7 @@
                 <span class="item-name">Orden Grande (1kg)</span>
                 <span class="item-price">$380</span>
             </div>
-            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px;">
+            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px; padding-top: 20px;">
                 <span class="item-name">Orden de Papas Extras</span>
                 <span class="item-price">$45</span>
             </div>
@@ -344,17 +391,17 @@
 
     <script>
         function openTab(tabName, btnElement) {
-            // Ocultar todas las tarjetas
+            // 1. Ocultar todas las tarjetas (cards)
             let cards = document.getElementsByClassName("card");
             for (let i = 0; i < cards.length; i++) {
                 cards[i].classList.remove("active");
             }
-            // Quitar clase active a todos los botones
+            // 2. Quitar clase 'active' a todos los botones
             let btns = document.getElementsByClassName("tab-btn");
             for (let i = 0; i < btns.length; i++) {
                 btns[i].classList.remove("active");
             }
-            // Mostrar tarjeta seleccionada y activar botón
+            // 3. Mostrar la tarjeta seleccionada y activar su botón
             document.getElementById(tabName).classList.add("active");
             btnElement.classList.add("active");
         }
