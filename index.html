@@ -19,11 +19,13 @@
             overflow-x: hidden;
         }
 
-        /* Hero Section */
+        /* Hero Section con tu FOTO REAL (kings-menu-hero.jpeg) */
         .hero {
             position: relative;
-            height: 40vh;
-            background-color: #1a1a1a;
+            height: 45vh;
+            background-image: url('kings-menu-hero.jpeg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -51,18 +53,21 @@
             z-index: 3;
         }
 
-        /* Tabs Navigation */
+        /* Tabs Navigation (Diseño tipo App) */
         .tabs-nav {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-bottom: 25px;
             background: rgba(255, 255, 255, 0.05);
             padding: 8px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (min-width: 600px) {
+            .tabs-nav { grid-template-columns: repeat(4, 1fr); }
         }
 
         .tab-btn {
@@ -70,13 +75,12 @@
             border: none;
             color: #b3b3b3;
             font-family: inherit;
-            font-size: 1.1em;
+            font-size: 0.9em;
             font-weight: 600;
-            padding: 12px 20px;
+            padding: 12px 5px;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            flex: 1;
         }
 
         .tab-btn.active {
@@ -85,13 +89,13 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
+        /* Tarjetas con Efecto Cristal */
         .card {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: none;
             animation: fadeIn 0.4s ease-out;
@@ -99,17 +103,17 @@
 
         .card.active { display: block; }
 
+        /* Estilos de Contenido */
         .menu-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            font-size: 1.2em;
             padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .item-price { font-weight: 700; color: #D4AF37; font-size: 1.3em; }
+        .item-price { font-weight: 700; color: #D4AF37; font-size: 1.2em; }
         .item-desc { font-size: 0.8em; color: #a0a0a0; margin-top: 4px; display: block; }
 
         .sauce-list {
@@ -121,62 +125,59 @@
         }
 
         .sauce-list li {
-            background-color: rgba(255, 255, 255, 0.02);
-            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            padding: 15px;
             border-radius: 12px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Estilos de Redes Sociales */
-        .social-container {
+        .promo-badge {
+            display: inline-block;
+            background: #D4AF37;
+            color: #111;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Redes Sociales y Footer */
+        .social-links {
             display: flex;
             justify-content: center;
             gap: 25px;
             margin-top: 20px;
         }
 
-        .social-icon {
-            color: #e6e6e6;
-            font-size: 2em;
-            transition: all 0.3s ease;
-            text-decoration: none;
+        .social-links a {
+            color: #fff;
+            font-size: 1.8em;
+            transition: 0.3s;
         }
 
-        .social-icon:hover {
-            color: #D4AF37;
-            transform: translateY(-5px);
-        }
+        .social-links a:hover { color: #D4AF37; transform: translateY(-3px); }
 
-        /* Floating WhatsApp Button */
+        /* WhatsApp Flotante */
         .floating-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            animation: pulse-green 2s infinite;
+            color: white; padding: 15px 25px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; z-index: 1000;
+            animation: pulse-green 2s infinite; display: flex; align-items: center; gap: 10px;
         }
 
+        /* Animaciones */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes levitate { 0% { transform: translateY(0); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+        @keyframes levitate { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
         @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
         @media (max-width: 600px) {
-            .tabs-nav { flex-direction: column; }
             .floating-btn { bottom: 20px; right: 20px; left: 20px; justify-content: center; }
-            .hero { height: 35vh; }
         }
     </style>
 </head>
@@ -189,67 +190,64 @@
 
     <main>
         <div class="tabs-nav">
-            <button class="tab-btn active" onclick="openTab('ordenes', this)">🔥 Órdenes</button>
+            <button class="tab-btn active" onclick="openTab('promos', this)">🎁 Promos</button>
+            <button class="tab-btn" onclick="openTab('ordenes', this)">🔥 Órdenes</button>
             <button class="tab-btn" onclick="openTab('combos', this)">👑 Combos</button>
             <button class="tab-btn" onclick="openTab('salsas', this)">🌶️ Salsas</button>
         </div>
 
-        <section id="ordenes" class="card active">
-            <div class="menu-item"><span>Orden Chica (250g)</span> <span class="item-price">$110</span></div>
-            <div class="menu-item"><span>Orden Mediana (450g)</span> <span class="item-price">$190</span></div>
-            <div class="menu-item"><span>Orden Grande (1kg)</span> <span class="item-price">$380</span></div>
-            <div class="menu-item" style="border-top: 1px dashed rgba(255,255,255,0.2); margin-top: 10px; padding-top: 10px;">
-                <span>Orden de Papas Extras</span> <span class="item-price">$45</span>
-            </div>
+        <section id="promos" class="card active">
+            <span class="promo-badge">Promo Real de Hoy</span>
+            <h2 id="promo-title">Cargando...</h2>
+            <p id="promo-text"></p>
+            <p style="font-size: 0.8em; color: #666; margin-top: 20px;">* Válido mencionando que lo viste en la página.</p>
+        </section>
+
+        <section id="ordenes" class="card">
+            <div class="menu-item"><span>250g</span> <span class="item-price">$110</span></div>
+            <div class="menu-item"><span>450g</span> <span class="item-price">$190</span></div>
+            <div class="menu-item"><span>1kg</span> <span class="item-price">$380</span></div>
+            <div class="menu-item"><span>Orden de Papas</span> <span class="item-price">$45</span></div>
         </section>
 
         <section id="combos" class="card">
             <div class="menu-item">
-                <div><span>Solitary King</span><span class="item-desc">250g boneless, 1 papas, 1 refresco</span></div>
+                <div><span>Solitary King</span><span class="item-desc">250g, 1 papas, 1 refresco</span></div>
                 <span class="item-price">$165</span>
             </div>
             <div class="menu-item">
-                <div><span>Little King</span><span class="item-desc">150g boneless, 1 porción papas, 1 refresco</span></div>
+                <div><span>Little King</span><span class="item-desc">150g, 1 porción papas, 1 refresco</span></div>
                 <span class="item-price">$115</span>
             </div>
             <div class="menu-item">
-                <div><span>Queen & King</span><span class="item-desc">450g boneless, 1 orden papas, 2 refrescos</span></div>
+                <div><span>Queen & King</span><span class="item-desc">450g, 1 papas, 2 refrescos</span></div>
                 <span class="item-price">$240</span>
             </div>
             <div class="menu-item">
-                <div><span>King's Pack</span><span class="item-desc">1kg boneless, 2 órdenes papas, 4 refrescos</span></div>
+                <div><span>King's Pack</span><span class="item-desc">1kg, 2 papas, 4 refrescos</span></div>
                 <span class="item-price">$510</span>
             </div>
         </section>
 
         <section id="salsas" class="card">
             <ul class="sauce-list">
-                <li><span>🥃 Mezcal</span></li>
-                <li><span>🌋 Xtra Hot</span></li>
-                <li><span>🍯 BBQ</span></li>
-                <li><span>🥭 Mango Habanero</span></li>
-                <li><span>🍊 Naranja Chipotle</span></li>
-                <li><span>🌶️ Tamarindo</span></li>
+                <li>🥃 Mezcal</li><li>🌋 Xtra Hot</li><li>🍯 BBQ</li><li>🥭 Mango</li><li>🍊 Chipotle</li><li>🌶️ Tamarindo</li>
             </ul>
         </section>
     </main>
 
     <footer style="text-align:center; padding: 40px 20px 120px;">
         <div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px dashed #D4AF37;">
-            <h3 style="margin-top:0;">👑 Únete a la Corte</h3>
-            <p>📍 Entregas en Durango, Dgo.</p>
+            <h3>👑 King's Boneless</h3>
+            <p>📍 Durango, Dgo.</p>
             <p>🕒 Jueves a Domingo | 6:00 PM - 11:00 PM</p>
             
-            <div class="social-container">
-                <a href="https://www.facebook.com/share/1G4jFiSRVu/" target="_blank" class="social-icon">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/kingsbnlesss?igsh=MmJ3NHdyczBkNjd3" target="_blank" class="social-icon">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1G4jFiSRVu/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/kingsbnlesss?igsh=MmJ3NHdyczBkNjd3" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
-        <p style="margin-top: 30px; color: #666; font-size: 0.8em;">&copy; 2026 King's Boneless. Todos los derechos reservados.</p>
+        <p style="margin-top: 30px; color: #444;">&copy; 2026 King's Boneless</p>
     </footer>
 
     <a href="https://wa.me/526181557765" class="floating-btn" target="_blank">📲 Haz tu Pedido</a>
@@ -263,6 +261,30 @@
             document.getElementById(tabName).classList.add("active");
             btnElement.classList.add("active");
         }
+
+        function updatePromo() {
+            const day = new Date().getDay(); // 0: Dom, 4: Jue, 5: Vie, 6: Sab
+            const title = document.getElementById("promo-title");
+            const text = document.getElementById("promo-text");
+
+            if (day === 4) {
+                title.innerText = "Jueves de Amigos";
+                text.innerText = "¡Papas GRATIS en la compra de 1kg de Boneless!";
+            } else if (day === 5) {
+                title.innerText = "Viernes de Pack";
+                text.innerText = "10% de descuento en el Queen & King Combo. ¡Aprovecha!";
+            } else if (day === 6) {
+                title.innerText = "Sábado Real";
+                text.innerText = "Agrega una salsa extra a cualquier orden sin costo.";
+            } else if (day === 0) {
+                title.innerText = "Domingo Familiar";
+                text.innerText = "King's Pack por solo $470 (Precio normal $510).";
+            } else {
+                title.innerText = "¡Prepárate!";
+                text.innerText = "Nos vemos el jueves a las 6:00 PM con las mejores salsas.";
+            }
+        }
+        window.onload = updatePromo;
     </script>
 </body>
 </html>
